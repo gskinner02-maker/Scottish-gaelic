@@ -1,0 +1,203 @@
+/* ------------------------------------------------------
+   GENERAL LAYOUT
+------------------------------------------------------ */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+/* ------------------------------------------------------
+   MENU BLOCKS
+------------------------------------------------------ */
+
+.menu-block {
+    background: white;
+    padding: 20px;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+/* ------------------------------------------------------
+   BUTTONS
+------------------------------------------------------ */
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background: #4a90e2;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #357ac9;
+}
+
+.back-btn {
+    background: #888;
+}
+
+.back-btn:hover {
+    background: #666;
+}
+
+.save-btn {
+    background: #2ecc71;
+}
+
+.save-btn:hover {
+    background: #27ae60;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    width: auto;
+    padding: 6px 10px;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* ------------------------------------------------------
+   STUDY MODE
+------------------------------------------------------ */
+
+#studyCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.study-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 8px;
+    width: 120px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.study-card:hover {
+    background: #f0f8ff;
+}
+
+/* ------------------------------------------------------
+   PLAY MODE (MATCHING GAME)
+------------------------------------------------------ */
+
+#game {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.column {
+    width: 40%;
+    margin: 0 10px;
+}
+
+.word {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 6px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.word:hover {
+    background: #eef6ff;
+}
+
+.selected {
+    background: #d0e7ff !important;
+}
+
+/* ------------------------------------------------------
+   TYPE THE ANSWER MODE
+------------------------------------------------------ */
+
+#typeAnswer input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+#typeFeedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* ------------------------------------------------------
+   EDITORS
+------------------------------------------------------ */
+
+.edit-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6px 0;
+}
+
+.edit-row input,
+.edit-row select {
+    padding: 6px;
+    margin: 0 4px;
+}
+
+.edit-gaelic,
+.edit-english {
+    width: 40%;
+}
+
+.edit-form {
+    width: 20%;
+}
+
+.add-row input,
+.add-row select {
+    background: #f9f9f9;
+}
+
+.add-row button {
+    width: auto;
+    padding: 6px 12px;
+}
