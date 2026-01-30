@@ -409,7 +409,6 @@ function chooseMixed(category) {
 // DAILY 10
 // -----------------------------
 function startDaily10() {
-    alert("Daily 10 clicked");
 
     let allVerbs = [
     ...(Array.isArray(futureRegular) ? futureRegular : []),
