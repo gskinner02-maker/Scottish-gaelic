@@ -75,6 +75,10 @@ let futureIrregular = [
     { gaelic: "cha toir mi", english: "I will not give", form: "negative" },
     { gaelic: "an toir mi?", english: "Will I give?", form: "question" },
 
+    { gaelic: "clunnidh mi", english: "I will hear", form: "positive" },
+    { gaelic: "cha chluinn mi", english: "I will not hear", form: "negative" },
+    { gaelic: "an cluinn mi?", english: "Will I hear?", form: "question" },
+
     { gaelic: "bidh mi", english: "I will be", form: "positive" },
     { gaelic: "cha bhi mi", english: "I will not be", form: "negative" },
     { gaelic: "am bi mi?", english: "Will I be?", form: "question" }
@@ -1169,4 +1173,5 @@ function saveFutureIrregular() {
 
     futureIrregular = newList;
     backFromEditor();
+
 }
