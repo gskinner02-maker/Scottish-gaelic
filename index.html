@@ -38,7 +38,7 @@ if ("serviceWorker" in navigator) {
 <div id="presentMenu" class="menu-block hidden">
     <h2>Present Tense Verbs (Progressive)</h2>
     <button onclick="openPresentRegular()">Regular Verbs (ALL)</button>
-    <button onclick="openPresentIrregular()">Irregular Verbs (ALL)</button>
+    <button onclick="openPresentIrregular()">More Verbs (ALL)</button>
     <button class="back-btn" onclick="showMainMenu()">Back to Main Menu</button>
 </div>
 
@@ -56,7 +56,7 @@ if ("serviceWorker" in navigator) {
 
 <!-- PRESENT IRREGULAR MENU -->
 <div id="presentIrregular" class="menu-block hidden">
-    <h2>Present Irregular Verbs (Progressive)</h2>
+    <h2>Present More Verbs (Progressive)</h2>
     <button onclick="chooseForm('presentIrregular','positive')">Positive</button>
     <button onclick="chooseForm('presentIrregular','negative')">Negative</button>
     <button onclick="chooseForm('presentIrregular','question')">Question</button>
@@ -223,4 +223,5 @@ if ("serviceWorker" in navigator) {
 
 <script src="script.js"></script>
 </body>
+
 </html>
