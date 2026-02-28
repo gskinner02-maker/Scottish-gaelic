@@ -243,16 +243,28 @@ let pastIrregular = [
     { gaelic: "an do rinn mi?", english: "Did I do?", form: "question" },
 
     { gaelic: "chunnaic mi", english: "I saw", form: "positive" },
-    { gaelic: "cha do chunnaic mi", english: "I did not see", form: "negative" },
-    { gaelic: "an do chunnaic mi?", english: "Did I see?", form: "question" },
+    { gaelic: "chan fhaca mi", english: "I did not see", form: "negative" },
+    { gaelic: "am faca mi?", english: "Did I see?", form: "question" },
+
+    { gaelic: "chuala mi", english: "I heard", form: "positive" },
+    { gaelic: "cha chuala mi", english: "I did not hear", form: "negative" },
+    { gaelic: "am cuala mi?", english: "Did I hear?", form: "question" },
         
     { gaelic: "thuirt mi", english: "I said", form: "positive" },
     { gaelic: "cha tuirt mi", english: "I did not say", form: "negative" },
     { gaelic: "an tuirt mi?", english: "Did I say?", form: "question" },
 
+    { gaelic: "ràinig mi", english: "I reached", form: "positive" },
+    { gaelic: "cha do ràinig mi", english: "I did not reach", form: "negative" },
+    { gaelic: "an do ràinig mi?", english: "Did I reach?", form: "question" },
+
     { gaelic: "fhuair mi", english: "I got", form: "positive" },
     { gaelic: "cha d’ fhuair mi", english: "I did not get", form: "negative" },
     { gaelic: "an d’ fhuair mi?", english: "Did I get?", form: "question" },
+
+    { gaelic: "rug mi", english: "I caught", form: "positive" },
+    { gaelic: "cha do rug mi", english: "I did not catch", form: "negative" },
+    { gaelic: "an do rug mi?", english: "Did I catch?", form: "question" },
 
     { gaelic: "thug mi", english: "I gave", form: "positive" },
     { gaelic: "cha do thug mi", english: "I did not give", form: "negative" },
@@ -1183,4 +1195,5 @@ function saveFutureIrregular() {
     backFromEditor();
 
 }
+
 
