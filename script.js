@@ -43,7 +43,7 @@ let futureRegular = [
 
     { gaelic: "bidh mi", english: "I will be", form: "positive" },
     { gaelic: "cha bhi mi", english: "I will not be", form: "negative" },
-    { gaelic: "am bi mi?", english: "Will I be?", form: "question" }
+    { gaelic: "am bi mi?", english: "Will I be?", form: "question" },
 
     { gaelic: "ithidh mi", english: "I will eat", form: "positive" },
     { gaelic: "cha ith mi", english: "I will not eat", form: "negative" },
@@ -1198,6 +1198,7 @@ function saveFutureIrregular() {
     backFromEditor();
 
 }
+
 
 
 
