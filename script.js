@@ -41,6 +41,10 @@ let futureRegular = [
     { gaelic: "cha chòcaich mi", english: "I will not cook", form: "negative" },
     { gaelic: "an còcaich mi?", english: "Will I cook?", form: "question" },
 
+    { gaelic: "bidh mi", english: "I will be", form: "positive" },
+    { gaelic: "cha bhi mi", english: "I will not be", form: "negative" },
+    { gaelic: "am bi mi?", english: "Will I be?", form: "question" }
+
     { gaelic: "ithidh mi", english: "I will eat", form: "positive" },
     { gaelic: "cha ith mi", english: "I will not eat", form: "negative" },
     { gaelic: "an ith mi?", english: "Will I eat?", form: "question" }
@@ -87,9 +91,6 @@ let futureIrregular = [
     { gaelic: "cha ruig mi", english: "I will not reach", form: "negative" },
     { gaelic: "an ruig mi?", english: "Will I reach?", form: "question" },
 
-    { gaelic: "bidh mi", english: "I will be", form: "positive" },
-    { gaelic: "cha bhi mi", english: "I will not be", form: "negative" },
-    { gaelic: "am bi mi?", english: "Will I be?", form: "question" }
 ];
 
 // -----------------------------
@@ -136,16 +137,18 @@ let presentRegular = [
     { gaelic: "chan eil mi a’ còcaireachd", english: "I am not cooking", form: "negative" },
     { gaelic: "a bheil mi a’ còcaireachd?", english: "Am I cooking?", form: "question" },
 
+    { gaelic: "tha mi", english: "I am", form: "positive" },
+    { gaelic: "chan eil mi", english: "I am not", form: "negative" },
+    { gaelic: "a bheil mi?", english: "Am I?", form: "question" },
+
+    
     { gaelic: "tha mi ag ithe", english: "I am eating", form: "positive" },
     { gaelic: "chan eil mi ag ithe", english: "I am not eating", form: "negative" },
     { gaelic: "a bheil mi ag ithe?", english: "Am I eating?", form: "question" }
 ];
 
 let presentIrregular = [
-    { gaelic: "tha mi", english: "I am", form: "positive" },
-    { gaelic: "chan eil mi", english: "I am not", form: "negative" },
-    { gaelic: "a bheil mi?", english: "Am I?", form: "question" },
-
+   
     { gaelic: "tha mi a’ dol", english: "I am going", form: "positive" },
     { gaelic: "chan eil mi a’ dol", english: "I am not going", form: "negative" },
     { gaelic: "a bheil mi a’ dol?", english: "Am I going?", form: "question" },
@@ -1195,6 +1198,7 @@ function saveFutureIrregular() {
     backFromEditor();
 
 }
+
 
 
 
