@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <!-- Admin-only edit buttons are hidden by default -->
+    <!-- Admin-only edit buttons hidden by default -->
     <style>
         .hide-edit {
             display: none !important;
@@ -32,7 +32,7 @@
 
 <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./service-worker.js");
+    navigator.serviceWorker.register("./service-worker.js");
 }
 </script>
 
@@ -44,13 +44,12 @@ if ("serviceWorker" in navigator) {
 <!-- MAIN MENU -->
 <div id="mainMenu" class="menu-block">
     <p>Choose a verb set to begin:</p>
-
     <button onclick="startDaily10()">Daily 10 (Random)</button>
-
     <button onclick="openPresentMenu()">Present Tense Verbs</button>
     <button onclick="openPastMenu()">Past Tense Verbs</button>
     <button onclick="openFutureMenu()">Future Tense Verbs</button>
 </div>
+
 
 <!-- PRESENT TENSE MENU -->
 <div id="presentMenu" class="menu-block hidden">
@@ -60,6 +59,7 @@ if ("serviceWorker" in navigator) {
     <button class="back-btn" onclick="showMainMenu()">Back to Main Menu</button>
 </div>
 
+
 <!-- PRESENT REGULAR MENU -->
 <div id="presentRegular" class="menu-block hidden">
     <h2>Present Regular Verbs (Progressive)</h2>
@@ -68,11 +68,10 @@ if ("serviceWorker" in navigator) {
     <button onclick="chooseForm('presentRegular','question')">Question</button>
     <button onclick="chooseMixed('presentRegular')">Mixed Forms (10)</button>
 
-    <!-- Admin-only hidden edit button -->
     <button class="edit-only hide-edit" onclick="editPresentRegular()">Edit Regular Verb List</button>
-
     <button class="back-btn" onclick="openPresentMenu()">Back</button>
 </div>
+
 
 <!-- PRESENT IRREGULAR MENU -->
 <div id="presentIrregular" class="menu-block hidden">
@@ -83,9 +82,9 @@ if ("serviceWorker" in navigator) {
     <button onclick="chooseMixed('presentIrregular')">Mixed Forms (10)</button>
 
     <button class="edit-only hide-edit" onclick="editPresentIrregular()">Edit Irregular Verb List</button>
-
     <button class="back-btn" onclick="openPresentMenu()">Back</button>
 </div>
+
 
 <!-- PAST TENSE MENU -->
 <div id="pastMenu" class="menu-block hidden">
@@ -94,6 +93,7 @@ if ("serviceWorker" in navigator) {
     <button onclick="openPastIrregular()">Irregular Verbs (ALL)</button>
     <button class="back-btn" onclick="showMainMenu()">Back to Main Menu</button>
 </div>
+
 
 <!-- PAST REGULAR MENU -->
 <div id="pastRegular" class="menu-block hidden">
@@ -104,9 +104,9 @@ if ("serviceWorker" in navigator) {
     <button onclick="chooseMixed('pastRegular')">Mixed Forms (10)</button>
 
     <button class="edit-only hide-edit" onclick="editPastRegular()">Edit Regular Verb List</button>
-
     <button class="back-btn" onclick="openPastMenu()">Back</button>
 </div>
+
 
 <!-- PAST IRREGULAR MENU -->
 <div id="pastIrregular" class="menu-block hidden">
@@ -117,9 +117,9 @@ if ("serviceWorker" in navigator) {
     <button onclick="chooseMixed('pastIrregular')">Mixed Forms (10)</button>
 
     <button class="edit-only hide-edit" onclick="editPastIrregular()">Edit Irregular Verb List</button>
-
     <button class="back-btn" onclick="openPastMenu()">Back</button>
 </div>
+
 
 <!-- FUTURE TENSE MENU -->
 <div id="futureMenu" class="menu-block hidden">
@@ -128,6 +128,7 @@ if ("serviceWorker" in navigator) {
     <button onclick="openIrregularMenu()">Irregular Verbs (ALL)</button>
     <button class="back-btn" onclick="showMainMenu()">Back to Main Menu</button>
 </div>
+
 
 <!-- FUTURE REGULAR MENU -->
 <div id="regularMenu" class="menu-block hidden">
@@ -138,9 +139,9 @@ if ("serviceWorker" in navigator) {
     <button onclick="chooseMixed('regular')">Mixed Forms (10)</button>
 
     <button class="edit-only hide-edit" onclick="editFutureRegular()">Edit Regular Verb List</button>
-
     <button class="back-btn" onclick="openFutureMenu()">Back</button>
 </div>
+
 
 <!-- FUTURE IRREGULAR MENU -->
 <div id="irregularMenu" class="menu-block hidden">
@@ -151,23 +152,78 @@ if ("serviceWorker" in navigator) {
     <button onclick="chooseMixed('irregular')">Mixed Forms (10)</button>
 
     <button class="edit-only hide-edit" onclick="editFutureIrregular()">Edit Irregular Verb List</button>
-
     <button class="back-btn" onclick="openFutureMenu()">Back</button>
 </div>
 
-<!-- Remaining content unchanged (study mode, play mode, type mode, editors…) -->
+
+<!-- FORM MODE MENU -->
+<div id="formMenu" class="menu-block hidden">
+    <h2 id="formMenuTitle"></h2>
+    <button onclick="startStudy()">Study this set</button>
+    <button onclick="startGame()">Play with this set</button>
+    <button onclick="startTypeAnswer()">Type the Answer</button>
+    <button class="back-btn" onclick="backFromFormMenu()">Back</button>
+</div>
+
+
+<!-- EDITORS -->
+<div id="presentRegularEditor" class="hidden">
+    <h2>Edit Present Regular Verb List</h2>
+    <div id="presentRegularEditContainer"></div>
+    <button class="save-btn" onclick="savePresentRegular()">Save Changes</button>
+    <button class="back-btn" onclick="openPresentRegular()">Back</button>
+</div>
+
+<div id="presentIrregularEditor" class="hidden">
+    <h2>Edit Present Irregular Verb List</h2>
+    <div id="presentIrregularEditContainer"></div>
+    <button class="save-btn" onclick="savePresentIrregular()">Save Changes</button>
+    <button class="back-btn" onclick="openPresentIrregular()">Back</button>
+</div>
+
+<div id="pastRegularEditor" class="hidden">
+    <h2>Edit Past Regular Verb List</h2>
+    <div id="pastRegularEditContainer"></div>
+    <button class="save-btn" onclick="savePastRegular()">Save Changes</button>
+    <button class="back-btn" onclick="openPastRegular()">Back</button>
+</div>
+
+<div id="pastIrregularEditor" class="hidden">
+    <h2>Edit Past Irregular Verb List</h2>
+    <div id="pastIrregularEditContainer"></div>
+    <button class="save-btn" onclick="savePastIrregular()">Save Changes</button>
+    <button class="back-btn" onclick="openPastIrregular()">Back</button>
+</div>
+
+<div id="regularEditor" class="hidden">
+    <h2>Edit Future Regular Verb List</h2>
+    <div id="regularEditContainer"></div>
+
+    <!-- FIXED BUTTON NAME -->
+    <button class="save-btn" onclick="saveFutureRegular()">Save Changes</button>
+    <button class="back-btn" onclick="openRegularMenu()">Back</button>
+</div>
+
+<div id="irregularEditor" class="hidden">
+    <h2>Edit Future Irregular Verb List</h2>
+    <div id="irregularEditContainer"></div>
+
+    <!-- FIXED BUTTON NAME -->
+    <button class="save-btn" onclick="saveFutureIrregular()">Save Changes</button>
+    <button class="back-btn" onclick="openIrregularMenu()">Back</button>
+</div>
+
 
 <!-- ADMIN MODE BUTTON -->
 <div id="adminToggle" onclick="requestAdmin()">Admin Mode</div>
 
 <!-- ADMIN PASSWORD SCRIPT -->
 <script>
-// Password for admin unlock:
+// Password for admin unlock
 const ADMIN_PASSWORD = "Gaelic123";
 
 function requestAdmin() {
     let entered = prompt("Enter admin password:");
-
     if (entered === ADMIN_PASSWORD) {
         enableAdmin();
     } else if (entered !== null) {
@@ -184,7 +240,8 @@ function enableAdmin() {
 }
 </script>
 
-<!-- VERSION SCRIPT (script.js fills #appVersion) -->
+
+<!-- MAIN SCRIPT -->
 <script src="script.js"></script>
 
 </body>
