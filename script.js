@@ -1,13 +1,13 @@
 // ================================
 // Gaelic Verb Trainer
-// Version: 1.0.0
+// Version: 1.0.5
 // Admin mode handled in index.html
 // ================================
 
 // -----------------------------
 // VERSION
 // -----------------------------
-const APP_VERSION = "1.0.1";
+const APP_VERSION = "1.0.5";
 window.addEventListener("DOMContentLoaded", () => {
     const v = document.getElementById("appVersion");
     if (v) v.textContent = APP_VERSION;
@@ -53,9 +53,9 @@ let futureRegular = [
     { gaelic: "cha choinnich mi", english: "I will not meet", form: "negative" },
     { gaelic: "an coinnich mi?", english: "Will I meet?", form: "question" },
 
-    { gaelic: "còcaidh mi", english: "I will cook", form: "positive" },
-    { gaelic: "cha chòcaich mi", english: "I will not cook", form: "negative" },
-    { gaelic: "an còcaich mi?", english: "Will I cook?", form: "question" },
+    { gaelic: "cuiridh mi", english: "I will put", form: "positive" },
+    { gaelic: "cha chuir mi", english: "I will not put", form: "negative" },
+    { gaelic: "an cuir mi?", english: "Will I put?", form: "question" },
 
     { gaelic: "bidh mi", english: "I will be", form: "positive" },
     { gaelic: "cha bhi mi", english: "I will not be", form: "negative" },
@@ -701,15 +701,19 @@ function submitTypedAnswer() {
     let userAnswer = document.getElementById("typeInput").value.trim().toLowerCase();
     let correctAnswer = item.english.trim().toLowerCase();
 
-    if (userAnswer === correctAnswer) {
+    if ((userAnswer === correctAnswer) || (userAnswer + "?"=== correctAnswer )) {
         document.getElementById("typeFeedback").textContent = "Correct!";
+        document.getElementById("typeFeedback").style.color = "green";
+
     } else {
         document.getElementById("typeFeedback").textContent =
             "Incorrect. Correct answer: " + item.english;
+        document.getElementById("typeFeedback").style.color = "red";
+
     }
 
     typeIndex++;
-    setTimeout(showTypeQuestion, 1200);
+    setTimeout(showTypeQuestion, 2000);
 }
 
 function endTypeAnswer() {
@@ -1214,3 +1218,8 @@ function saveFutureIrregular() {
     backFromEditor();
 
 }
+
+
+
+
+
