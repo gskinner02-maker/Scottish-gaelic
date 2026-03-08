@@ -1,13 +1,13 @@
 // ================================
 // Gaelic Verb Trainer
-// Version: 1.0.5
+// Version: 1.0.7
 // Admin mode handled in index.html
 // ================================
 
 // -----------------------------
 // VERSION
 // -----------------------------
-const APP_VERSION = "1.0.5";
+const APP_VERSION = "1.0.7";
 window.addEventListener("DOMContentLoaded", () => {
     const v = document.getElementById("appVersion");
     if (v) v.textContent = APP_VERSION;
@@ -416,17 +416,38 @@ function chooseForm(category, form) {
     currentForm = form;
     setCurrentList();
 
-    let tense = "Future";
-    if (category.startsWith("present")) tense = "Present";
-    if (category.startsWith("past")) tense = "Past";
+   let tense = "Future";
+const catLower = category.toLowerCase();
 
-    let catLabel = category.includes("Irregular") ? "Irregular" : "Regular";
-    let formLabel = form.charAt(0).toUpperCase() + form.slice(1);
+if (catLower.startsWith("present")) tense = "Present";
+if (catLower.startsWith("past")) tense = "Past";
 
-    hideAll();
-    document.getElementById("formMenuTitle").textContent =
-        `${catLabel} – ${formLabel} (${tense} Tense)`;
-    document.getElementById("formMenu").classList.remove("hidden");
+let catLabel = catLower.includes("irregular") ? "Irregular" : "Regular";
+let formLabel = form.charAt(0).toUpperCase() + form.slice(1);
+
+// Special rule: Present + Irregular → override title
+let titleText;
+if (tense === "Present" && catLabel === "Irregular") {
+    titleText = "Other Regular Verbs";
+} else {
+    titleText = `${catLabel} – ${formLabel} (${tense} Tense)`;
+}
+
+hideAll();
+document.getElementById("formMenuTitle").textContent = titleText;
+document.getElementById("formMenu").classList.remove("hidden");
+
+    //let tense = "Future";
+    //if (category.startsWith("present")) tense = "Present";
+    //if (category.startsWith("past")) tense = "Past";
+
+    //let catLabel = category.includes("Irregular") ? "Irregular" : "Regular";
+    //let formLabel = form.charAt(0).toUpperCase() + form.slice(1);
+
+    //hideAll();
+    //document.getElementById("formMenuTitle").textContent =
+    //    `${catLabel} – ${formLabel} (${tense} Tense)`;
+    //document.getElementById("formMenu").classList.remove("hidden");
 }
 
 // -----------------------------
