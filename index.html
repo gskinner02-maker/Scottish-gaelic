@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gaelic Verb Trainer</title>
+    <title>Gaelic Verb Trainer v1.1</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2c7be5">
@@ -198,11 +198,21 @@ if ("serviceWorker" in navigator) {
 
 <!-- TYPE THE ANSWER MODE -->
 <div id="typeAnswer" class="hidden">
-    <h2>Type the Answer</h2>
+    <h2>Type the Answer new</h2>
+
     <p id="typePrompt"></p>
+
     <input id="typeInput" type="text" placeholder="Type the English meaning">
+
+    <!-- ⭐ NEW TOGGLE BUTTON GOES HERE -->
+    <button id="toggleDirectionBtn" onclick="toggleTypeDirection()">
+        Switch to English → Gaelic
+    </button>
+
     <button onclick="submitTypedAnswer()">Submit</button>
+
     <p id="typeFeedback"></p>
+
     <button class="back-btn" onclick="backFromStudyOrPlay()">Back</button>
 </div>
 
@@ -273,6 +283,14 @@ function enableAdmin() {
 
     document.getElementById('adminToggle').style.background = "#008000";
 }
+
+document.getElementById("typeInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // stops form submission or page reload
+        submitTypedAnswer();
+    }
+});
+
 </script>
 
 <script src="script.js"></script>

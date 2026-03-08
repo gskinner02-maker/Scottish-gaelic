@@ -7,7 +7,7 @@
 // -----------------------------
 // VERSION
 // -----------------------------
-const APP_VERSION = "1.0.7";
+const APP_VERSION = "1.1.3";
 window.addEventListener("DOMContentLoaded", () => {
     const v = document.getElementById("appVersion");
     if (v) v.textContent = APP_VERSION;
@@ -298,6 +298,7 @@ let savedForm = null;
 let currentList = [];
 let typeIndex = 0;
 let editorTarget = "";
+let typeDirection = "EnglishToGaelic"; 
 
 // -----------------------------
 // HELPERS
@@ -324,6 +325,31 @@ function setCurrentList() {
     } else {
         currentList = baseList.filter(item => item.form === currentForm);
     }
+}
+
+function stripAccents(str) {
+    return str
+        .normalize("NFD")                     // split letters + accents
+        .replace(/[\u0300-\u036f]/g, "")      // remove all diacritics
+        .replace(/\ba['’]\s/g, "a ")          // a’ + space → a + space
+        .replace(/\ba['’]$/g, "a")            // a’ at end of string
+        .toLowerCase()
+        .trim();
+}
+
+function toggleTypeDirection() {
+    if (typeDirection === "gaelicToEnglish") {
+        typeDirection = "englishToGaelic";
+        document.getElementById("toggleDirectionBtn").textContent =
+            "Switch to Gaelic → English";
+    } else {
+        typeDirection = "gaelicToEnglish";
+        document.getElementById("toggleDirectionBtn").textContent =
+            "Switch to English → Gaelic";
+    }
+
+    // Restart the question so the prompt updates immediately
+    showTypeQuestion();
 }
 
 // -----------------------------
@@ -691,18 +717,33 @@ function startTypeAnswer() {
     savedForm = currentForm;
     
     if (currentForm !== "mixed") {
-    setCurrentList();
+        setCurrentList();
     }
-
 
     typeIndex = 0;
 
     hideAll();
     document.getElementById("typeAnswer").classList.remove("hidden");
 
+    const btn = document.getElementById("toggleDirectionBtn");
+
+    // Set correct label
+    btn.textContent =
+        typeDirection === "gaelicToEnglish"
+            ? "Switch to English → Gaelic"
+            : "Switch to Gaelic → English";
+
+    // ⭐ Set correct colour
+    if (typeDirection === "gaelicToEnglish") {
+        btn.classList.add("toggle-green");
+        btn.classList.remove("toggle-purple");
+    } else {
+        btn.classList.add("toggle-purple");
+        btn.classList.remove("toggle-green");
+    }
+
     showTypeQuestion();
 }
-
 
 function showTypeQuestion() {
     if (typeIndex >= currentList.length) {
@@ -712,29 +753,63 @@ function showTypeQuestion() {
 
     let item = currentList[typeIndex];
 
-    document.getElementById("typePrompt").textContent = item.gaelic;
+    if (typeDirection === "gaelicToEnglish") {
+        document.getElementById("typePrompt").textContent = item.gaelic;
+    } else {
+        document.getElementById("typePrompt").textContent = item.english;
+    }
+
     document.getElementById("typeInput").value = "";
     document.getElementById("typeFeedback").textContent = "";
 }
 
 function submitTypedAnswer() {
     let item = currentList[typeIndex];
-    let userAnswer = document.getElementById("typeInput").value.trim().toLowerCase();
-    let correctAnswer = item.english.trim().toLowerCase();
 
-    if ((userAnswer === correctAnswer) || (userAnswer + "?"=== correctAnswer )) {
+    // Raw values (keep accents for display)
+    let userAnswerRaw = document.getElementById("typeInput").value;
+    let correctAnswerRaw =
+        typeDirection === "gaelicToEnglish"
+            ? item.english
+            : item.gaelic;
+
+    // Strip accents + lowercase for comparison
+    let userAnswer = stripAccents(userAnswerRaw);
+    let correctAnswer = stripAccents(correctAnswerRaw);
+
+    // Allow optional question mark
+    if (userAnswer === correctAnswer || userAnswer + "?" === correctAnswer) {
         document.getElementById("typeFeedback").textContent = "Correct!";
         document.getElementById("typeFeedback").style.color = "green";
-
     } else {
         document.getElementById("typeFeedback").textContent =
-            "Incorrect. Correct answer: " + item.english;
+            "Incorrect. Correct answer: " + correctAnswerRaw;
         document.getElementById("typeFeedback").style.color = "red";
-
     }
 
     typeIndex++;
     setTimeout(showTypeQuestion, 2000);
+}
+
+function toggleTypeDirection() {
+    const btn = document.getElementById("toggleDirectionBtn");
+
+    if (typeDirection === "gaelicToEnglish") {
+        typeDirection = "englishToGaelic";
+        btn.textContent = "Switch to Gaelic → English";
+
+        btn.classList.remove("toggle-green");
+        btn.classList.add("toggle-purple");
+
+    } else {
+        typeDirection = "gaelicToEnglish";
+        btn.textContent = "Switch to English → Gaelic";
+
+        btn.classList.remove("toggle-purple");
+        btn.classList.add("toggle-green");
+    }
+
+    showTypeQuestion();
 }
 
 function endTypeAnswer() {

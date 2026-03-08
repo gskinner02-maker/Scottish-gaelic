@@ -87,6 +87,16 @@ button:hover {
     background: #c0392b;
 }
 
+.toggle-green {
+    background-color: #3cb371; /* medium sea green */
+    color: white;
+}
+
+.toggle-purple {
+    background-color: #9370db; /* medium purple */
+    color: white;
+}
+
 /* ------------------------------------------------------
    STUDY MODE
 ------------------------------------------------------ */
