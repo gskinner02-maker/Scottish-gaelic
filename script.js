@@ -7,12 +7,13 @@
 // -----------------------------
 // VERSION
 // -----------------------------
-const APP_VERSION = "1.1.3";
+const APP_VERSION = "1.1.4";
 window.addEventListener("DOMContentLoaded", () => {
     const v = document.getElementById("appVersion");
     if (v) v.textContent = APP_VERSION;
 });
 
+console.log("Loaded script.js v1.1");
 
 // -----------------------------
 // FUTURE VERB LISTS
@@ -299,6 +300,8 @@ let currentList = [];
 let typeIndex = 0;
 let editorTarget = "";
 let typeDirection = "EnglishToGaelic"; 
+
+
 
 // -----------------------------
 // HELPERS
