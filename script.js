@@ -1322,6 +1322,11 @@ function saveFutureIrregular() {
 
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const version = "20240308";
+    const el = document.getElementById("appVersion");
+    if (el) el.textContent = version;
+});
 
 
 
