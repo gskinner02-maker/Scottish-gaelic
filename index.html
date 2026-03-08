@@ -303,12 +303,6 @@ document.getElementById("typeInput").addEventListener("keydown", function (event
     }
 });
 
-<script>
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.getRegistrations().then(regs => {
-        regs.forEach(reg => reg.unregister());
-    });
-}
 </script> 
 
 </body>
