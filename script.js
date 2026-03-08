@@ -8,18 +8,14 @@
 // VERSION
 // -----------------------------
 
-const APP_VERSION = "1.1.4";
+
+
+const APP_VERSION = "2.0.0";
 window.addEventListener("DOMContentLoaded", () => {
+    console.log("appVersion element is:", document.getElementById("appVersion"));
     const v = document.getElementById("appVersion");
     if (v) v.textContent = APP_VERSION;
 });
-
-//const APP_VERSION = "2.0.0";
-//window.addEventListener("DOMContentLoaded", () => {
-//    console.log("appVersion element is:", document.getElementById("appVersion"));
-//    const v = document.getElementById("appVersion");
-//    if (v) v.textContent = APP_VERSION;
-//});
 
 //console.log("Loaded script.js v1.1");
 
@@ -1325,6 +1321,7 @@ function saveFutureIrregular() {
     backFromEditor();
 
 }
+
 
 
 
