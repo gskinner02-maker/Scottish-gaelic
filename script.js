@@ -1322,11 +1322,12 @@ function saveFutureIrregular() {
 
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+(function() {
     const version = "20240308";
     const el = document.getElementById("appVersion");
     if (el) el.textContent = version;
-});
+})();
+
 
 
 
