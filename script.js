@@ -1323,10 +1323,11 @@ function saveFutureIrregular() {
 }
 
 (function() {
-    const version = "20240308";
+    const version = "v2.0";
     const el = document.getElementById("appVersion");
     if (el) el.textContent = version;
 })();
+
 
 
 
