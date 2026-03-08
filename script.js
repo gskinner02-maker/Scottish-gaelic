@@ -10,7 +10,7 @@
 
 
 
-const APP_VERSION = "2.0.0";
+const APP_VERSION = "3.0";
 window.addEventListener("DOMContentLoaded", () => {
     console.log("appVersion element is:", document.getElementById("appVersion"));
     const v = document.getElementById("appVersion");
@@ -1323,10 +1323,11 @@ function saveFutureIrregular() {
 }
 
 (function() {
-    const version = "v2.0";
+    const version = "v3.0";
     const el = document.getElementById("appVersion");
     if (el) el.textContent = version;
 })();
+
 
 
 
